@@ -1,6 +1,7 @@
 import { CreateUserDTO } from "@modules/accounts/dtos";
 import { Users } from "@modules/accounts/infra/database/typeorm/entities/Users";
 import { IUsersRepository } from "@modules/accounts/repositories";
+import { AppError } from "@shared/errors/AppError";
 
 import { hash } from "bcrypt";
 import { injectable, inject } from "tsyringe";
@@ -16,7 +17,7 @@ class CreateUserUseCase {
     const userAlreadyExits = await this.usersRepository.findByEmail(email);
 
     if (userAlreadyExits) {
-      throw new Error("User already exists");
+      throw new AppError("User already exists");
     }
 
     const passwordHash = await hash(password, 10);
