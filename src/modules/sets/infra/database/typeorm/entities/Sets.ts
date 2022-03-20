@@ -1,5 +1,7 @@
 import { Users } from "@modules/accounts/infra/database/typeorm/entities/Users";
 import { BaseEntity } from "@shared/infra/database/typeorm/entities/BaseEntity";
+import { UUIDProvider } from "@shared/providers/UUIDProvider/implementations/UUIDProvider";
+import { IUUIDProvider } from "@shared/providers/UUIDProvider/models/IUUIDProvider";
 import {
   Column,
   Entity,
@@ -26,7 +28,7 @@ class Sets extends BaseEntity {
   userId: string;
 
   @Column({ name: "category_id" })
-  categoryId: string;
+  categoryId: number;
 
   @OneToOne(() => Users)
   @JoinColumn({ name: "user_id" })
@@ -38,6 +40,12 @@ class Sets extends BaseEntity {
 
   @OneToMany(() => Cards, (card) => card.id)
   cards: Cards[];
+
+  constructor() {
+    super();
+    const uuidProvider: IUUIDProvider = new UUIDProvider();
+    this.id = uuidProvider.generate();
+  }
 }
 
 export { Sets };
