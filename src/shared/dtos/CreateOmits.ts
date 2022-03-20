@@ -1,3 +1,3 @@
-type CreateOmits = "id" | "createdAt" | "updatedAt" | "merge";
+type CreateOmits = "id" | "createdAt" | "updatedAt" | "deletedAt" | "merge";
 
 export { CreateOmits };

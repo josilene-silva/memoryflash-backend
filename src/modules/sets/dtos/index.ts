@@ -1,5 +1,6 @@
 export { CategoryDTO } from "./Categories/CategoryDTO";
 export { CreateCategoryDTO } from "./Categories/CreateCategoryDTO";
+export { UpdateCategoryDTO } from "./Categories/UpdateCategoryDTO";
 
 export { CreateSetsDTO } from "./Sets/CreateSetsDTO";
 export { SetsDTO } from "./Sets/SetsDTO";
