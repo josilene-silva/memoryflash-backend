@@ -1,5 +1,5 @@
 import { CreateSetsDTO } from "@modules/sets/dtos";
-import { ISetsRepository } from "@modules/sets/repositories/ISetsRepository";
+import { ISetsRepository } from "@modules/sets/repositories";
 import { getRepository, Repository } from "typeorm";
 import { Sets } from "../entities/Sets";
 

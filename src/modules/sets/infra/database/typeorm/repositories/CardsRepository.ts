@@ -1,5 +1,5 @@
 import { CreateCardDTO } from "@modules/sets/dtos";
-import { ICardsRepository } from "@modules/sets/repositories/ICardsRepository";
+import { ICardsRepository } from "@modules/sets/repositories";
 import { getRepository, Repository } from "typeorm";
 import { Cards } from "../entities/Cards";
 

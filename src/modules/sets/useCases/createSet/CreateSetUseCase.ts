@@ -1,6 +1,6 @@
 import { CreateSetsDTO } from "@modules/sets/dtos";
 import { Sets } from "@modules/sets/infra/database/typeorm/entities/Sets";
-import { ISetsRepository } from "@modules/sets/repositories/ISetsRepository";
+import { ISetsRepository } from "@modules/sets/repositories";
 
 import { inject, injectable } from "tsyringe";
 

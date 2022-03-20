@@ -1,6 +1,6 @@
 import { CreateCardDTO } from "@modules/sets/dtos";
 import { Cards } from "@modules/sets/infra/database/typeorm/entities/Cards";
-import { ICardsRepository } from "@modules/sets/repositories/ICardsRepository";
+import { ICardsRepository } from "@modules/sets/repositories";
 
 import { inject, injectable } from "tsyringe";
 
