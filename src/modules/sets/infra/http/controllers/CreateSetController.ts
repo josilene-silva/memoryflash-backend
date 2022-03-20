@@ -4,14 +4,14 @@ import { container } from "tsyringe";
 
 export class CreateSetController {
   async handle(req: Request, res: Response): Promise<Response> {
-    const { name, description, userId, categoryId } = req.body;
+    const { name, description, categoryId } = req.body;
 
     const createSetUseCase = container.resolve(CreateSetUseCase);
 
     const set = await createSetUseCase.execute({
       name,
       description,
-      userId,
+      userId: req.user.id,
       categoryId,
     });
 
