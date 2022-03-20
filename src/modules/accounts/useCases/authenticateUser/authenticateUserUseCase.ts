@@ -36,8 +36,7 @@ export class AuthenticateUserUseCase {
       throw new AppError("Email ou password incorrect");
     }
 
-    const token = sign({ id: user.id }, authConfig.secretToken, {
-      subject: user.id,
+    const token = sign({ sub: user.id }, authConfig.secretToken, {
       expiresIn: authConfig.expiresInToken,
     });
 
