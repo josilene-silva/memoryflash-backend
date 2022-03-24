@@ -1,5 +1,6 @@
 import "reflect-metadata";
 import "express-async-errors";
+import morgan from "morgan";
 import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
 
@@ -11,6 +12,7 @@ import { AppError } from "@shared/errors/AppError";
 createConnection();
 const app = express();
 
+app.use(morgan("dev"));
 app.use(express.json());
 
 app.use(cors());
