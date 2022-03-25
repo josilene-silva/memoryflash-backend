@@ -1,5 +1,5 @@
 import { CreateSetsDTO } from "@modules/sets/dtos";
-import { Sets } from "@modules/sets/infra/database/typeorm/entities/Sets";
+import { Set } from "@modules/sets/infra/database/typeorm/entities/Set";
 import { ISetsRepository } from "@modules/sets/repositories";
 
 import { inject, injectable } from "tsyringe";
@@ -16,7 +16,7 @@ export class CreateSetUseCase {
     description,
     userId,
     categoryId,
-  }: CreateSetsDTO): Promise<Sets> {
+  }: CreateSetsDTO): Promise<Set> {
     const set = await this.setsRepository.create({
       name,
       description,

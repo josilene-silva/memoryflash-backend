@@ -1,5 +1,5 @@
 import { CreateSetsDTO } from "@modules/sets/dtos";
-import { Sets } from "../infra/database/typeorm/entities/Sets";
+import { Set } from "../infra/database/typeorm/entities/Set";
 
 export interface ISetsRepository {
   create({
@@ -7,5 +7,5 @@ export interface ISetsRepository {
     description,
     userId,
     categoryId,
-  }: CreateSetsDTO): Promise<Sets>;
+  }: CreateSetsDTO): Promise<Set>;
 }

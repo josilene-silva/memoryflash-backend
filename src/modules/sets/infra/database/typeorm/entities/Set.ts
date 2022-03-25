@@ -1,4 +1,4 @@
-import { Users } from "@modules/accounts/infra/database/typeorm/entities/Users";
+import { User } from "@modules/accounts/infra/database/typeorm/entities/User";
 import { BaseEntity } from "@shared/infra/database/typeorm/entities/BaseEntity";
 import { UUIDProvider } from "@shared/providers/UUIDProvider/implementations/UUIDProvider";
 import { IUUIDProvider } from "@shared/providers/UUIDProvider/models/IUUIDProvider";
@@ -10,11 +10,11 @@ import {
   OneToOne,
   PrimaryColumn,
 } from "typeorm";
-import { Cards } from "./Cards";
-import { Categories } from "./Categories";
+import { Card } from "./Card";
+import { Category } from "./Category";
 
 @Entity("sets")
-class Sets extends BaseEntity {
+class Set extends BaseEntity {
   @PrimaryColumn("uuid")
   id: string;
 
@@ -30,16 +30,16 @@ class Sets extends BaseEntity {
   @Column({ name: "category_id" })
   categoryId: number;
 
-  @OneToOne(() => Users)
+  @OneToOne(() => User)
   @JoinColumn({ name: "user_id" })
-  user: Users;
+  user: User;
 
-  @OneToOne(() => Categories)
+  @OneToOne(() => Category)
   @JoinColumn({ name: "category_id" })
-  category: Categories;
+  category: Category;
 
-  @OneToMany(() => Cards, (card) => card.id)
-  cards: Cards[];
+  @OneToMany(() => Card, (card) => card.id)
+  cards: Card[];
 
   constructor() {
     super();
@@ -48,4 +48,4 @@ class Sets extends BaseEntity {
   }
 }
 
-export { Sets };
+export { Set };

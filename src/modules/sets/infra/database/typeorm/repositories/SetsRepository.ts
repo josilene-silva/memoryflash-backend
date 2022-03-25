@@ -1,13 +1,13 @@
 import { CreateSetsDTO } from "@modules/sets/dtos";
 import { ISetsRepository } from "@modules/sets/repositories";
 import { getRepository, Repository } from "typeorm";
-import { Sets } from "../entities/Sets";
+import { Set } from "../entities/Set";
 
 export class SetsRepository implements ISetsRepository {
-  private repository: Repository<Sets>;
+  private repository: Repository<Set>;
 
   constructor() {
-    this.repository = getRepository(Sets);
+    this.repository = getRepository(Set);
   }
 
   async create({
@@ -15,7 +15,7 @@ export class SetsRepository implements ISetsRepository {
     description,
     userId,
     categoryId,
-  }: CreateSetsDTO): Promise<Sets> {
+  }: CreateSetsDTO): Promise<Set> {
     const set = this.repository.create({
       name,
       description,

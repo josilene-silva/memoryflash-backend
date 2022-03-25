@@ -1,5 +1,5 @@
 import { CreateCardDTO } from "@modules/sets/dtos";
-import { Cards } from "@modules/sets/infra/database/typeorm/entities/Cards";
+import { Card } from "@modules/sets/infra/database/typeorm/entities/Card";
 import { ICardsRepository } from "@modules/sets/repositories";
 
 import { inject, injectable } from "tsyringe";
@@ -11,7 +11,7 @@ export class CreateCardUseCase {
     private cardsRepository: ICardsRepository
   ) {}
 
-  async execute({ front, back, setId }: CreateCardDTO): Promise<Cards> {
+  async execute({ front, back, setId }: CreateCardDTO): Promise<Card> {
     const card = await this.cardsRepository.create({ front, back, setId });
 
     return card;

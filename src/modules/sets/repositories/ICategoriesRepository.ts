@@ -1,9 +1,9 @@
 import { CreateCategoryDTO, UpdateCategoryDTO } from "@modules/sets/dtos";
-import { Categories } from "@modules/sets/infra/database/typeorm/entities/Categories";
+import { Category } from "@modules/sets/infra/database/typeorm/entities/Category";
 
 export interface ICategoriesRepository {
-  create({ name }: CreateCategoryDTO): Promise<Categories>;
-  findByName(name: string, id?: number): Promise<Categories | undefined>;
-  findById(id: number): Promise<Categories | undefined>;
-  update({ id, name }: UpdateCategoryDTO): Promise<Categories>;
+  create({ name }: CreateCategoryDTO): Promise<Category>;
+  findByName(name: string, id?: number): Promise<Category | undefined>;
+  findById(id: number): Promise<Category | undefined>;
+  update({ id, name }: UpdateCategoryDTO): Promise<Category>;
 }

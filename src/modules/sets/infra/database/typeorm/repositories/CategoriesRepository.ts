@@ -1,17 +1,17 @@
 import { CreateCategoryDTO, UpdateCategoryDTO } from "@modules/sets/dtos";
-import { Categories } from "@modules/sets/infra/database/typeorm/entities/Categories";
+import { Category } from "@modules/sets/infra/database/typeorm/entities/Category";
 import { ICategoriesRepository } from "@modules/sets/repositories/ICategoriesRepository";
 
 import { getRepository, Repository, Not } from "typeorm";
 
 export class CategoriesRepository implements ICategoriesRepository {
-  private repository: Repository<Categories>;
+  private repository: Repository<Category>;
 
   constructor() {
-    this.repository = getRepository(Categories);
+    this.repository = getRepository(Category);
   }
 
-  async create({ name }: CreateCategoryDTO): Promise<Categories> {
+  async create({ name }: CreateCategoryDTO): Promise<Category> {
     const category = this.repository.create({
       name,
     });
@@ -21,19 +21,19 @@ export class CategoriesRepository implements ICategoriesRepository {
     return categoryCreated;
   }
 
-  async findByName(name: string, id?: number): Promise<Categories | undefined> {
+  async findByName(name: string, id?: number): Promise<Category | undefined> {
     const category = await this.repository.findOne(
       id ? { name, id: Not(id) } : { name }
     );
     return category;
   }
 
-  async findById(id: number): Promise<Categories | undefined> {
+  async findById(id: number): Promise<Category | undefined> {
     const category = await this.repository.findOne({ id });
     return category;
   }
 
-  async update({ id, name }: UpdateCategoryDTO): Promise<Categories> {
+  async update({ id, name }: UpdateCategoryDTO): Promise<Category> {
     const category = this.repository.create({
       id,
       name,

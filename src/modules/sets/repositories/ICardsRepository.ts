@@ -1,6 +1,6 @@
 import { CreateCardDTO } from "../dtos";
-import { Cards } from "../infra/database/typeorm/entities/Cards";
+import { Card } from "../infra/database/typeorm/entities/Card";
 
 export interface ICardsRepository {
-  create({ front, back, setId }: CreateCardDTO): Promise<Cards>;
+  create({ front, back, setId }: CreateCardDTO): Promise<Card>;
 }

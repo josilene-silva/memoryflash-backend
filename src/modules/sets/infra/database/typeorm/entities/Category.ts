@@ -2,7 +2,7 @@ import { BaseEntity } from "@shared/infra/database/typeorm/entities/BaseEntity";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity("categories")
-class Categories extends BaseEntity {
+class Category extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -10,4 +10,4 @@ class Categories extends BaseEntity {
   name: string;
 }
 
-export { Categories };
+export { Category };

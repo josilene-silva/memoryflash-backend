@@ -1,5 +1,5 @@
 import { CreateCategoryDTO } from "@modules/sets/dtos";
-import { Categories } from "@modules/sets/infra/database/typeorm/entities/Categories";
+import { Category } from "@modules/sets/infra/database/typeorm/entities/Category";
 import { ICategoriesRepository } from "@modules/sets/repositories";
 import { AppError } from "@shared/errors/AppError";
 
@@ -12,7 +12,7 @@ export class CreateCategoryUseCase {
     private categoriesRepository: ICategoriesRepository
   ) {}
 
-  async execute({ name }: CreateCategoryDTO): Promise<Categories> {
+  async execute({ name }: CreateCategoryDTO): Promise<Category> {
     const categoryAlreadyExists = await this.categoriesRepository.findByName(
       name
     );

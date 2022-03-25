@@ -5,7 +5,7 @@ import { BaseEntity } from "@shared/infra/database/typeorm/entities/BaseEntity";
 import { Column, Entity, PrimaryColumn } from "typeorm";
 
 @Entity("users")
-class Users extends BaseEntity {
+class User extends BaseEntity {
   @PrimaryColumn("uuid")
   id: string;
 
@@ -25,4 +25,4 @@ class Users extends BaseEntity {
   }
 }
 
-export { Users };
+export { User };

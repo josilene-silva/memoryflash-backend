@@ -1,5 +1,5 @@
 import { UpdateCategoryDTO } from "@modules/sets/dtos";
-import { Categories } from "@modules/sets/infra/database/typeorm/entities/Categories";
+import { Category } from "@modules/sets/infra/database/typeorm/entities/Category";
 import { ICategoriesRepository } from "@modules/sets/repositories";
 import { AppError } from "@shared/errors/AppError";
 
@@ -12,7 +12,7 @@ export class UpdateCategoryUseCase {
     private categoriesRepository: ICategoriesRepository
   ) {}
 
-  async execute({ name, id }: UpdateCategoryDTO): Promise<Categories> {
+  async execute({ name, id }: UpdateCategoryDTO): Promise<Category> {
     const category = await this.categoriesRepository.findById(id);
 
     if (!category) {

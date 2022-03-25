@@ -4,7 +4,7 @@ import { IUUIDProvider } from "@shared/providers/UUIDProvider/models/IUUIDProvid
 import { Column, Entity, PrimaryColumn } from "typeorm";
 
 @Entity("cards")
-class Cards extends BaseEntity {
+class Card extends BaseEntity {
   @PrimaryColumn("uuid")
   id: string;
 
@@ -24,4 +24,4 @@ class Cards extends BaseEntity {
   }
 }
 
-export { Cards };
+export { Card };

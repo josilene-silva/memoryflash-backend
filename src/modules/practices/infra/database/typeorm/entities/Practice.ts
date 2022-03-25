@@ -1,14 +1,14 @@
-import { Sets } from "@modules/sets/infra/database/typeorm/entities/Sets";
+import { Set } from "@modules/sets/infra/database/typeorm/entities/Set";
 import { BaseEntity } from "@shared/infra/database/typeorm/entities/BaseEntity";
 import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
 
 @Entity("practices")
-class Practices extends BaseEntity {
+class Practice extends BaseEntity {
   @PrimaryColumn("uuid")
   id: string;
 
-  @OneToMany(() => Sets, (set) => set.id)
-  sets: Sets[];
+  @OneToMany(() => Set, (set) => set.id)
+  sets: Set[];
 
   @Column({ name: "amount_easy" })
   amountEasy: string;
@@ -22,4 +22,4 @@ class Practices extends BaseEntity {
   duration: Date;
 }
 
-export { Practices };
+export { Practice };

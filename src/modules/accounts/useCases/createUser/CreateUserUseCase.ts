@@ -1,5 +1,5 @@
 import { CreateUserDTO } from "@modules/accounts/dtos";
-import { Users } from "@modules/accounts/infra/database/typeorm/entities/Users";
+import { User } from "@modules/accounts/infra/database/typeorm/entities/User";
 import { IUsersRepository } from "@modules/accounts/repositories";
 import { AppError } from "@shared/errors/AppError";
 
@@ -13,7 +13,7 @@ class CreateUserUseCase {
     private usersRepository: IUsersRepository
   ) {}
 
-  async execute({ email, name, password }: CreateUserDTO): Promise<Users> {
+  async execute({ email, name, password }: CreateUserDTO): Promise<User> {
     const userAlreadyExits = await this.usersRepository.findByEmail(email);
 
     if (userAlreadyExits) {
