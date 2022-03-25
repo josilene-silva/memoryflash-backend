@@ -37,4 +37,8 @@ export class CardsRepository implements ICardsRepository {
     const card = await this.repository.findOne({ id });
     return card;
   }
+
+  async delete(id: string): Promise<void> {
+    await this.repository.delete(id);
+  }
 }
