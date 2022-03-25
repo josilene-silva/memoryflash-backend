@@ -6,4 +6,5 @@ export interface ISetsRepository {
   findById(id: string): Promise<Set | undefined>;
   update(data: UpdateSetDTO): Promise<void>;
   delete(id: string): Promise<void>;
+  list(): Promise<Set[]>;
 }

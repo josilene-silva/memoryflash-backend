@@ -38,7 +38,7 @@ class Set extends BaseEntity {
   @JoinColumn({ name: "category_id" })
   category: Category;
 
-  @OneToMany(() => Card, (card) => card.id)
+  @OneToMany(() => Card, (card) => card.set)
   cards: Card[];
 
   constructor() {

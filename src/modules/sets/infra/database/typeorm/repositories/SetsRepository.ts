@@ -52,4 +52,11 @@ export class SetsRepository implements ISetsRepository {
   async delete(id: string): Promise<void> {
     await this.repository.delete(id);
   }
+
+  async list(): Promise<Set[]> {
+    const sets = await this.repository.find({
+      relations: ["user", "category", "cards"],
+    });
+    return sets;
+  }
 }
