@@ -6,4 +6,5 @@ export { CreateSetsDTO } from "./Sets/CreateSetsDTO";
 export { SetsDTO } from "./Sets/SetsDTO";
 
 export { CreateCardDTO } from "./Cards/CreateCardDTO";
+export { UpdateCardsDTO } from "./Cards/UpdateCardsDTO";
 export { CardsDTO } from "./Cards/CardsDTO";
