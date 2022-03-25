@@ -33,11 +33,6 @@ export class CreateCards1647321664033 implements MigrationInterface {
             type: "timestamp",
             default: "now()",
           },
-          {
-            name: "deleted_at",
-            type: "timestamp",
-            isNullable: true,
-          },
         ],
         foreignKeys: [
           {

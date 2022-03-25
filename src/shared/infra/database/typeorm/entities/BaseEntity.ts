@@ -1,4 +1,4 @@
-import { CreateDateColumn, DeleteDateColumn, UpdateDateColumn } from "typeorm";
+import { CreateDateColumn, UpdateDateColumn } from "typeorm";
 
 class BaseEntity {
   @CreateDateColumn({ name: "created_at" })
@@ -6,9 +6,6 @@ class BaseEntity {
 
   @UpdateDateColumn({ name: "updated_at" })
   updatedAt: Date;
-
-  @DeleteDateColumn({ name: "deleted_at" })
-  deletedAt: Date;
 
   public merge(props: Partial<this>): this {
     return Object.assign(this, props);

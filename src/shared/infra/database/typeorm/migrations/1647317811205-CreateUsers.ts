@@ -33,11 +33,6 @@ export class CreateUsers1647317811205 implements MigrationInterface {
             type: "timestamp",
             default: "now()",
           },
-          {
-            name: "deleted_at",
-            type: "timestamp",
-            isNullable: true,
-          },
         ],
       })
     );
