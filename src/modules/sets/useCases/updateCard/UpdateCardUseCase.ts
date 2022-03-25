@@ -1,4 +1,4 @@
-import { UpdateCardsDTO } from "@modules/sets/dtos";
+import { UpdateCardDTO } from "@modules/sets/dtos";
 import { ICardsRepository } from "@modules/sets/repositories";
 import { AppError } from "@shared/errors/AppError";
 
@@ -11,7 +11,7 @@ export class UpdateCardUseCase {
     private cardsRepository: ICardsRepository
   ) {}
 
-  async execute({ id, front, back, setId }: UpdateCardsDTO): Promise<void> {
+  async execute({ id, front, back, setId }: UpdateCardDTO): Promise<void> {
     const cardExists = this.cardsRepository.findById(id);
     if (!cardExists) throw new AppError("Category don't exists", 404);
 

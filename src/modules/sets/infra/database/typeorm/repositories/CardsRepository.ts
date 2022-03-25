@@ -1,4 +1,4 @@
-import { CreateCardDTO, UpdateCardsDTO } from "@modules/sets/dtos";
+import { CreateCardDTO, UpdateCardDTO } from "@modules/sets/dtos";
 import { ICardsRepository } from "@modules/sets/repositories";
 import { getRepository, Repository } from "typeorm";
 import { Card } from "../entities/Card";
@@ -22,7 +22,7 @@ export class CardsRepository implements ICardsRepository {
     return cardCreated;
   }
 
-  async update({ id, front, back, setId }: UpdateCardsDTO): Promise<void> {
+  async update({ id, front, back, setId }: UpdateCardDTO): Promise<void> {
     const card = this.repository.create({
       id,
       front,

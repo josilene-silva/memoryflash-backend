@@ -1,4 +1,4 @@
 import { CreateOmits } from "@shared/dtos";
 import { SetsDTO } from "./SetsDTO";
 
-export type CreateSetsDTO = Omit<SetsDTO, CreateOmits>;
+export type CreateSetDTO = Omit<SetsDTO, CreateOmits>;

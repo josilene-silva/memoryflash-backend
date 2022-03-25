@@ -1,4 +1,4 @@
-import { CreateSetsDTO } from "@modules/sets/dtos";
+import { CreateSetDTO } from "@modules/sets/dtos";
 import { Set } from "@modules/sets/infra/database/typeorm/entities/Set";
 import { ISetsRepository } from "@modules/sets/repositories";
 
@@ -16,7 +16,7 @@ export class CreateSetUseCase {
     description,
     userId,
     categoryId,
-  }: CreateSetsDTO): Promise<Set> {
+  }: CreateSetDTO): Promise<Set> {
     const set = await this.setsRepository.create({
       name,
       description,
