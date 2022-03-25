@@ -48,4 +48,8 @@ export class SetsRepository implements ISetsRepository {
 
     await this.repository.save(set);
   }
+
+  async delete(id: string): Promise<void> {
+    await this.repository.delete(id);
+  }
 }
