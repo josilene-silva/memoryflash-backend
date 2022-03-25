@@ -59,4 +59,14 @@ export class SetsRepository implements ISetsRepository {
     });
     return sets;
   }
+
+  async listOne(id: string): Promise<Set | undefined> {
+    const sets = await this.repository.findOne({
+      where: {
+        id,
+      },
+      relations: ["user", "category", "cards"],
+    });
+    return sets;
+  }
 }
