@@ -50,11 +50,11 @@ O MemoryFlash é uma aplicação de flashcards, cartões com perguntas e respost
 
 - Listar conjunto
 - Listar conjuntos
+- Listar categorias
 
 - Atualizar cartão
 - Atualizar categoria
 - Atualizar conjunto
 
 > A serem implementadas:
-> - Listar categorias
 > - Listar cartão

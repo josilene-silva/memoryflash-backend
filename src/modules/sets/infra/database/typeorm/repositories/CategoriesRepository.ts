@@ -33,6 +33,11 @@ export class CategoriesRepository implements ICategoriesRepository {
     return category;
   }
 
+  async list(): Promise<Category[]> {
+    const categories = await this.repository.find();
+    return categories;
+  }
+
   async update({ id, name }: UpdateCategoryDTO): Promise<Category> {
     const category = this.repository.create({
       id,
