@@ -3,7 +3,7 @@ version: "3.7"
 services:
   memoryflash_db:
     image: postgres
-    container_name: memory-flash-db
+    container_name: memoryflash_db
     restart: always
     env_file:
       - .env
@@ -19,11 +19,23 @@ services:
 
   memoryflash_api:
     build: .
-    container_name: memoryflash-api
+    container_name: memoryflash_api
     ports:
       - 3334:3334
     volumes:
       - .:/usr/app
+    network_mode: host
+
+  memoryflash_redis:
+    image: redis:alpine
+    env_file:
+      - .env
+    environment:
+      REDIS_MASTER_HOST: ${REDIS_HOST}
+      REDIS_PORT_NUMBER: ${REDIS_PORT}
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+    ports:
+      - 6379:6379
     network_mode: host
 
 volumes:
