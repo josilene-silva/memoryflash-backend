@@ -1,13 +1,16 @@
 FROM node
 
-WORKDIR /usr/app
+USER node
+RUN mkdir -p /home/node/server/node_modules
+RUN mkdir -p /home/node/server/dist
+RUN chown -R node:node /home/node/server & chown -R node:node /home/node/server/**
+WORKDIR /home/node/server
 
-COPY package.json ./
+COPY package.json yarn.* ./
+RUN yarn
 
-RUN npm install
-
-COPY . .
+COPY --chown=node:node . .
 
 EXPOSE 3333
 
-CMD [ "npm", "run", "dev" ]
+CMD [ "yarn", "dev" ]

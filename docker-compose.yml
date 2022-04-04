@@ -4,7 +4,6 @@ services:
   memoryflash_db:
     image: postgres
     container_name: memoryflash_db
-    restart: always
     env_file:
       - .env
     ports:
@@ -23,7 +22,7 @@ services:
     ports:
       - 3334:3334
     volumes:
-      - .:/usr/app
+      - .:/home/node/server
     network_mode: host
 
   memoryflash_redis:
