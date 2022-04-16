@@ -15,10 +15,10 @@ export class UpdateCardUseCase {
 
   async execute({ id, front, back, setId }: UpdateCardDTO): Promise<void> {
     const cardExists = await this.cardsRepository.findById(id);
-    if (!cardExists) throw new AppError("Card don't exists", 404);
+    if (!cardExists) throw new AppError("Cartão não encontrado", 404);
 
     const setExists = await this.setsRepository.findById(id);
-    if (!setExists) throw new AppError("Set don't exists", 404);
+    if (!setExists) throw new AppError("Conjunto não encontrado", 404);
 
     await this.cardsRepository.update({ id, front, back, setId });
   }

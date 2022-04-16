@@ -26,7 +26,7 @@ export async function ensureAuthenticate(
   const authHeader = req.headers.authorization;
 
   if (!authHeader) {
-    throw new AppError("Token missing", 401);
+    throw new AppError("Token ausente", 401);
   }
 
   const [_, token] = authHeader.split(" ");
@@ -37,7 +37,7 @@ export async function ensureAuthenticate(
     }) as IPayload;
 
     if (isExpired(exp)) {
-      throw new AppError("Token expired", 401);
+      throw new AppError("Token expirado", 401);
     }
 
     req.user = {

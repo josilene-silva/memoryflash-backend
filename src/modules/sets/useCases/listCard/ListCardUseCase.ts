@@ -12,7 +12,7 @@ export class ListCardUseCase {
 
   async execute(id: string): Promise<Card> {
     const card = await this.cardsRepository.findById(id);
-    if (!card) throw new AppError("Card don't exists");
+    if (!card) throw new AppError("Cartão não encontrado");
     return card;
   }
 }

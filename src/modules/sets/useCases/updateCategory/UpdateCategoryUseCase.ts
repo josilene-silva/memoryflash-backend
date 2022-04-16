@@ -16,7 +16,7 @@ export class UpdateCategoryUseCase {
     const category = await this.categoriesRepository.findById(id);
 
     if (!category) {
-      throw new AppError("Category don't exists", 404);
+      throw new AppError("Categoria não encontrada", 404);
     }
 
     const nameAlreadyExists = await this.categoriesRepository.findByName(
@@ -25,7 +25,7 @@ export class UpdateCategoryUseCase {
     );
 
     if (nameAlreadyExists) {
-      throw new AppError("Category already exists");
+      throw new AppError("Categoria já cadastrada");
     }
 
     const categoryUpdated = await this.categoriesRepository.update({

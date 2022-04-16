@@ -11,7 +11,7 @@ export class DeleteSetUseCase {
 
   async execute(id: string): Promise<void> {
     const setExists = await this.setsRepository.findById(id);
-    if (!setExists) throw new AppError("Set don't exists");
+    if (!setExists) throw new AppError("Conjunto não encotrado");
 
     await this.setsRepository.delete(id);
   }

@@ -22,10 +22,10 @@ export class UpdateSetUseCase {
     categoryId,
   }: UpdateSetDTO): Promise<void> {
     const setExists = await this.setsRepository.findById(id);
-    if (!setExists) throw new AppError("Set don't found", 404);
+    if (!setExists) throw new AppError("Conjunto não encontrado", 404);
 
     const categoryExists = await this.categoriesRepository.findById(categoryId);
-    if (!categoryExists) throw new AppError("Category don't found", 404);
+    if (!categoryExists) throw new AppError("Categoria não encontrada", 404);
 
     await this.setsRepository.update({
       id,

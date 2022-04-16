@@ -21,7 +21,7 @@ export class CreateCategoryUseCase {
     );
 
     if (categoryAlreadyExists) {
-      throw new AppError("Category already exists");
+      throw new AppError("Categoria já cadastrada");
     }
 
     await this.cacheProvider.del("categories");
