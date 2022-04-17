@@ -18,6 +18,9 @@ class Card extends BaseEntity {
   @Column({ name: "set_id" })
   setId: string;
 
+  @Column({ name: "difficulty_level" })
+  difficultyLevel: number;
+
   @OneToOne(() => Set)
   @JoinColumn({ name: "set_id" })
   set: Set;

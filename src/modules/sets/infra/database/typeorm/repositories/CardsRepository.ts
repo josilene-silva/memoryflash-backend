@@ -1,3 +1,4 @@
+import { UpdateCardDifficultyLevelDTO } from "@modules/practices/dtos/UpdateCardDifficultyLevelDTO";
 import { CreateCardDTO, UpdateCardDTO } from "@modules/sets/dtos";
 import { ICardsRepository } from "@modules/sets/repositories";
 import { getRepository, Repository } from "typeorm";
@@ -36,6 +37,18 @@ export class CardsRepository implements ICardsRepository {
   async findById(id: string): Promise<Card> {
     const card = await this.repository.findOne({ id });
     return card;
+  }
+
+  async updateByIdIn(data: UpdateCardDifficultyLevelDTO[]): Promise<void> {
+    const promises = data.map((update) => {
+      const card = this.repository.create({
+        id: update.id,
+        difficultyLevel: update.difficultyLevel,
+      });
+      return this.repository.save(card);
+    });
+
+    await Promise.all(promises);
   }
 
   async delete(id: string): Promise<void> {

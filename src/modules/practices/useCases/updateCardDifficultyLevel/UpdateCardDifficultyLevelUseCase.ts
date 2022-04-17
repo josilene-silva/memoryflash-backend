@@ -10,7 +10,6 @@ export class UpdateCardDifficultyLevelUseCase {
   ) {}
 
   async execute(data: UpdateCardDifficultyLevelDTO[]): Promise<void> {
-    const cards = await this.cardsRepository.updateByIdIn(data);
-    console.log(cards);
+    await this.cardsRepository.updateByIdIn(data);
   }
 }
