@@ -4,7 +4,6 @@ import { container } from "tsyringe";
 
 export class CreatePracticeController {
   async handle(req: Request, res: Response): Promise<Response> {
-    console.log(req.body);
     const createPracticeUseCase = container.resolve(CreatePracticeUseCase);
 
     const practice = await createPracticeUseCase.execute(req.body);
