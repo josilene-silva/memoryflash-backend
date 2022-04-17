@@ -31,4 +31,9 @@ export class PracticesRepository implements IPracticesRepository {
 
     return practiceCreated;
   }
+
+  async list(id: string): Promise<Practice> {
+    const practice = await this.repository.findOne({ id });
+    return practice;
+  }
 }
