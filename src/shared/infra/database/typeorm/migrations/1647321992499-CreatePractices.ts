@@ -28,8 +28,12 @@ export class CreatePractices1647321992499 implements MigrationInterface {
             type: "integer",
           },
           {
-            name: "duration",
-            type: "time",
+            name: "start_time",
+            type: "timestamp",
+          },
+          {
+            name: "end_time",
+            type: "timestamp",
           },
           {
             name: "created_at",

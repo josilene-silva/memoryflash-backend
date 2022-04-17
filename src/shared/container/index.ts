@@ -14,6 +14,9 @@ import { CategoriesRepository } from "@modules/sets/infra/database/typeorm/repos
 import { CardsRepository } from "@modules/sets/infra/database/typeorm/repositories/CardsRepository";
 import { SetsRepository } from "@modules/sets/infra/database/typeorm/repositories/SetsRepository";
 
+import { PracticesRepository } from "@modules/practices/infra/database/typeorm/repositories/PracticesRepository";
+import { IPracticesRepository } from "@modules/practices/repositories/IPracticesRepository";
+
 container.registerSingleton<IUsersRepository>(
   "UsersRepository",
   UsersRepository
@@ -29,4 +32,9 @@ container.registerSingleton<ISetsRepository>("SetsRepository", SetsRepository);
 container.registerSingleton<ICardsRepository>(
   "CardsRepository",
   CardsRepository
+);
+
+container.registerSingleton<IPracticesRepository>(
+  "PracticesRepository",
+  PracticesRepository
 );

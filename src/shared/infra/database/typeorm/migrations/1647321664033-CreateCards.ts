@@ -16,6 +16,12 @@ export class CreateCards1647321664033 implements MigrationInterface {
             type: "uuid",
           },
           {
+            name: "difficulty_level",
+            type: "integer",
+            isNullable: false,
+            default: 2,
+          },
+          {
             name: "front",
             type: "varchar",
           },
