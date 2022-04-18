@@ -11,7 +11,7 @@ export class ListPracticeUseCase {
   ) {}
 
   async execute(id: string): Promise<Practice> {
-    const practice = await this.practicesRepository.list(id);
+    const practice = await this.practicesRepository.listOne(id);
 
     if (!practice) throw new AppError("Prática não encontrada", 404);
 

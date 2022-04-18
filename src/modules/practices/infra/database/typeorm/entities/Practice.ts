@@ -2,7 +2,7 @@ import { Set } from "@modules/sets/infra/database/typeorm/entities/Set";
 import { BaseEntity } from "@shared/infra/database/typeorm/entities/BaseEntity";
 import { UUIDProvider } from "@shared/providers/UUIDProvider/implementations/UUIDProvider";
 import { IUUIDProvider } from "@shared/providers/UUIDProvider/models/IUUIDProvider";
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from "typeorm";
 
 @Entity("practices")
 class Practice extends BaseEntity {
@@ -11,6 +11,10 @@ class Practice extends BaseEntity {
 
   @Column({ name: "set_id" })
   setId: string;
+
+  @OneToOne(() => Set)
+  @JoinColumn({ name: "set_id" })
+  set: Set;
 
   @Column({ name: "amount_easy" })
   amountEasy: number;

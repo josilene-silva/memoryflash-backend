@@ -32,8 +32,13 @@ export class PracticesRepository implements IPracticesRepository {
     return practiceCreated;
   }
 
-  async list(id: string): Promise<Practice> {
-    const practice = await this.repository.findOne({ id });
+  async listOne(id: string): Promise<Practice | undefined> {
+    const practice = await this.repository.findOne({
+      where: {
+        id,
+      },
+      relations: ["set"],
+    });
     return practice;
   }
 }
