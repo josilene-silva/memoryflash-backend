@@ -55,7 +55,7 @@ export class SetsRepository implements ISetsRepository {
 
   async list(): Promise<Set[]> {
     const sets = await this.repository.find({
-      relations: ["user", "category", "cards"],
+      relations: ["category", "cards", "practices"],
     });
     return sets;
   }
@@ -65,7 +65,7 @@ export class SetsRepository implements ISetsRepository {
       where: {
         id,
       },
-      relations: ["user", "category", "cards"],
+      relations: ["category", "cards", "practices"],
     });
     return sets;
   }
