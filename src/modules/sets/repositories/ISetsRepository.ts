@@ -7,5 +7,5 @@ export interface ISetsRepository {
   update(data: UpdateSetDTO): Promise<void>;
   listOne(id: string): Promise<Set | undefined>;
   delete(id: string): Promise<void>;
-  list(): Promise<Set[]>;
+  list(userId?: string): Promise<Set[]>;
 }

@@ -9,8 +9,8 @@ export class ListSetsUseCase {
     private setsRepository: ISetsRepository
   ) {}
 
-  async execute(): Promise<Set[]> {
-    const sets = await this.setsRepository.list();
+  async execute(userId?: string): Promise<Set[]> {
+    const sets = await this.setsRepository.list(userId);
 
     return sets;
   }

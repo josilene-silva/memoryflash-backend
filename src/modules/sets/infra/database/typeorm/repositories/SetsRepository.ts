@@ -53,8 +53,13 @@ export class SetsRepository implements ISetsRepository {
     await this.repository.delete(id);
   }
 
-  async list(): Promise<Set[]> {
+  async list(userId?: string): Promise<Set[]> {
     const sets = await this.repository.find({
+      where: {
+        user: {
+          id: userId,
+        },
+      },
       relations: ["category", "cards", "practices"],
     });
     return sets;
