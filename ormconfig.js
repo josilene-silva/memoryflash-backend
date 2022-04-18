@@ -26,5 +26,10 @@ module.exports = [
         cli: {
             migrationsDir: './src/shared/infra/database/typeorm/migrations',
         },
+        extra: {
+            ssl: {
+                rejectUnauthorized: false,
+            },
+        },
     }
 ];
