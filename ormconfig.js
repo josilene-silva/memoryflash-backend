@@ -1,5 +1,15 @@
 require('dotenv').config();
 
+const ambient = process.env.NODE_ENV;
+
+const config = ambient === 'development' ? {
+    entities: './src/modules/**/infra/database/typeorm/entities/*.ts',
+    migrations: './src/shared/infra/database/typeorm/migrations/*.ts',
+} : {
+    entities: './dist/modules/**/infra/database/typeorm/entities/*.js',
+    migrations: './dist/shared/infra/database/typeorm/migrations/*.js',
+};
+
 module.exports = [
     {
         name: 'default',
@@ -11,8 +21,8 @@ module.exports = [
         database: process.env.DB_NAME,
         schema: 'public',
         synchronize: false,
-        entities: ['./src/modules/**/infra/database/typeorm/entities/*.ts'],
-        migrations: ['./src/shared/infra/database/typeorm/migrations/*.ts'],
+        entities: [config.entities],
+        migrations: [config.migrations],
         cli: {
             migrationsDir: './src/shared/infra/database/typeorm/migrations',
         },
