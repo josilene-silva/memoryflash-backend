@@ -5,6 +5,7 @@ import { Practice } from "@modules/practices/infra/database/typeorm/entities/Pra
 import { IPracticesRepository } from "@modules/practices/repositories/IPracticesRepository";
 import { ISetsRepository } from "@modules/sets/repositories";
 import { AppError } from "@shared/errors/AppError";
+import { ICacheProvider } from "@shared/container/providers/CacheProvider/ICacheProvider";
 
 @injectable()
 export class CreatePracticeUseCase {
@@ -12,7 +13,9 @@ export class CreatePracticeUseCase {
     @inject("PracticesRepository")
     private practicesRepository: IPracticesRepository,
     @inject("SetsRepository")
-    private setsRepository: ISetsRepository
+    private setsRepository: ISetsRepository,
+    @inject("CacheProvider")
+    private cacheProvider: ICacheProvider
   ) {}
 
   async execute({
@@ -22,6 +25,7 @@ export class CreatePracticeUseCase {
     amountHard,
     startTime,
     endTime,
+    userId,
   }: CreatePracticeDTO): Promise<Practice> {
     const set = this.setsRepository.findById(setId);
 
@@ -35,6 +39,13 @@ export class CreatePracticeUseCase {
       startTime,
       endTime,
     });
+
+    await this.cacheProvider.set(
+      `practice:${practice.id}`,
+      JSON.stringify(practice)
+    );
+    await this.cacheProvider.del(`set:${setId}`);
+    await this.cacheProvider.del(`sets:${userId}`);
 
     return practice;
   }
