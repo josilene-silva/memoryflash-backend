@@ -5,6 +5,7 @@ import { container } from "tsyringe";
 export class CreateCardController {
   async handle(req: Request, res: Response): Promise<Response> {
     const { front, back, setId } = req.body;
+    const { id: userId } = req.user;
 
     const createCardUseCase = container.resolve(CreateCardUseCase);
 
@@ -12,6 +13,7 @@ export class CreateCardController {
       front,
       back,
       setId,
+      userId,
     });
 
     return res.status(201).json(card);

@@ -1,6 +1,7 @@
 import { Router } from "express";
 
 import { UpdateCardDifficultyLevelController } from "@modules/practices/infra/http/controllers/UpdateCardDifficultyLevelController";
+import { ensureAuthenticate } from "@shared/infra/http/middlewares/ensureAuthenticate";
 import { CreateCardController } from "../controllers/CreateCardController";
 import { UpdateCardController } from "../controllers/UpdateCardController";
 import { DeleteCardController } from "../controllers/DeleteCardController";
@@ -15,7 +16,7 @@ const updateCardDifficultyLevelController =
 
 const cardRoutes = Router();
 
-cardRoutes.post("/", createCardController.handle);
+cardRoutes.post("/", ensureAuthenticate, createCardController.handle);
 cardRoutes.get("/:id", listCardController.handle);
 cardRoutes.put("/:id", updateCardController.handle);
 cardRoutes.patch("/", updateCardDifficultyLevelController.handle);
