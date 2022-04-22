@@ -1,16 +1,13 @@
-FROM node
+FROM node:14-alpine
 
-USER node
-RUN mkdir -p /home/node/server/node_modules
-RUN mkdir -p /home/node/server/dist
-RUN chown -R node:node /home/node/server & chown -R node:node /home/node/server/**
-WORKDIR /home/node/server
+WORKDIR /usr/app
 
-COPY package.json yarn.* ./
-RUN yarn
+COPY package.json ./
 
-COPY --chown=node:node . .
+RUN npm install
+
+COPY . .
 
 EXPOSE 3333
 
-CMD [ "yarn", "dev" ]
+CMD [ "npm", "run", "dev" ]
