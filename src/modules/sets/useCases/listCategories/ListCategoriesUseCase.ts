@@ -8,22 +8,24 @@ import { inject, injectable } from "tsyringe";
 export class ListCategoriesUseCase {
   constructor(
     @inject("CategoriesRepository")
-    private categoriesRepository: ICategoriesRepository /* ,
+    private categoriesRepository: ICategoriesRepository,
     @inject("CacheProvider")
-    private cacheProvider: ICacheProvider */
+    private cacheProvider: ICacheProvider
   ) {}
 
   async execute(): Promise<Category[]> {
     let categories = [];
 
-    // const categoriesCache = await this.cacheProvider.get("categories");
+    const categoriesCache = await this.cacheProvider.get("categories");
 
-    // if (!categoriesCache) {
-    categories = await this.categoriesRepository.list();
-    //   await this.cacheProvider.set(`categories`, JSON.stringify(categories));
-    // } else {
-    //   categories = JSON.parse(categoriesCache);
-    // }
+    if (!categoriesCache) {
+      console.log("Pega do banco");
+      categories = await this.categoriesRepository.list();
+      await this.cacheProvider.set(`categories`, JSON.stringify(categories));
+    } else {
+      console.log("Pega do cache");
+      categories = JSON.parse(categoriesCache);
+    }
 
     return categories;
   }

@@ -10,9 +10,9 @@ import { inject, injectable } from "tsyringe";
 export class CreateCategoryUseCase {
   constructor(
     @inject("CategoriesRepository")
-    private categoriesRepository: ICategoriesRepository /* ,
+    private categoriesRepository: ICategoriesRepository,
     @inject("CacheProvider")
-    private cacheProvider: ICacheProvider */
+    private cacheProvider: ICacheProvider
   ) {}
 
   async execute({ name }: CreateCategoryDTO): Promise<Category> {
@@ -24,7 +24,7 @@ export class CreateCategoryUseCase {
       throw new AppError("Categoria já cadastrada");
     }
 
-    // await this.cacheProvider.del("categories");
+    await this.cacheProvider.del("categories");
     const category = await this.categoriesRepository.create({ name });
 
     return category;
