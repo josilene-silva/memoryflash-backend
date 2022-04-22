@@ -2,6 +2,7 @@ import { inject, injectable } from "tsyringe";
 import { ISetsRepository } from "@modules/sets/repositories";
 import { Set } from "@modules/sets/infra/database/typeorm/entities/Set";
 import { ICacheProvider } from "@shared/container/providers/CacheProvider/ICacheProvider";
+import { Card } from "@modules/sets/infra/database/typeorm/entities/Card";
 
 @injectable()
 export class ListSetUseCase {
@@ -13,7 +14,7 @@ export class ListSetUseCase {
   ) {}
 
   async execute(id: string): Promise<Set> {
-    let set = null;
+    let set: null | Set = null;
 
     const setCache = await this.cacheProvider.get(`set:${id}`);
 
@@ -25,8 +26,25 @@ export class ListSetUseCase {
       console.log("Pega do cache");
       set = JSON.parse(setCache);
     }
+    set.cards = this.sortDifficultyLevel(set.cards);
+
     // await this.cacheProvider.del(`set:${id}`);
 
     return set;
+  }
+
+  private sortDifficultyLevel(cards: Card[]) {
+    const orderedCards = cards.sort((a, b) => {
+      if (a.difficultyLevel < b.difficultyLevel) {
+        return 1;
+      }
+      if (a.difficultyLevel > b.difficultyLevel) {
+        return -1;
+      }
+
+      return 0;
+    });
+
+    return orderedCards;
   }
 }

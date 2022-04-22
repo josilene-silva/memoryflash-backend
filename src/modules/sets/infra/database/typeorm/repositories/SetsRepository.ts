@@ -61,6 +61,7 @@ export class SetsRepository implements ISetsRepository {
         },
       },
       relations: ["category", "cards", "practices"],
+      order: { name: "ASC" },
     });
     return sets;
   }
