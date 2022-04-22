@@ -8,7 +8,7 @@
     "typeorm": "ts-node-dev -r tsconfig-paths/register node_modules/typeorm/cli.js",
     "migration:run": "npx typeorm migration:run",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
-    "postinstall": "npm run build",
+    "heroku-postbuild": "npm run build",
     "start": "node dist/server.js"
   },
   "dependencies": {
