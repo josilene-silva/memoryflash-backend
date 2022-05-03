@@ -21,7 +21,7 @@
 
 [![Heroku](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=discord&logoColor=white)](https://memoryflash-api.herokuapp.com)
 
-**_Essa é a API desenvolvida para a aplicação mobile de MemoryFlash_**
+**_Essa é a API desenvolvida para a aplicação mobile MemoryFlash_**
 
 
 O **MemoryFlash** é uma aplicação de _flashcards_, cartões com perguntas e respostas, que permite ao usuário criar cartões de estudo, praticar, acompanhar seu progresso, compartilhar e obter flashcards de outros usuários.
@@ -54,7 +54,7 @@ $ cp -r .env.example .env
 ```
 
 ```
-$ docker-composer up
+$ docker-compose up
 ```
 
 
