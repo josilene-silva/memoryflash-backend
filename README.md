@@ -1,6 +1,25 @@
+![GitHub top language](https://img.shields.io/github/languages/top/josilene-silva/memoryflash-backend?style=flat-square&logo=TypeScript)
+![GitHub package.json version (subfolder of monorepo)](https://img.shields.io/github/package-json/v/josilene-silva/memoryflash-backend/main?style=flat-square&logo=npm&color=CB3837)
+![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/josilene-silva/memoryflash-backend?style=flat-square&logo=github&color=red)
+
+[![eslint](https://img.shields.io/badge/eslint-7.32.0-4b32c3?style=flat-square&logo=eslint)](https://eslint.org/)
+[![airbnb-style](https://flat.badgen.net/badge/style-guide/airbnb/ff5a5f?icon=airbnb)](https://github.com/airbnb/javascript)
+[![prettier](https://img.shields.io/badge/prettier-2.5.1-%23F7B93E?style=flat-square&logo=prettier)](https://github.com/airbnb/javascript)
+[![TypeScript](https://img.shields.io/badge/typescript-4.6.2-%233178C6?style=flat-square&logo=Typescript)](https://www.typescriptlang.org/)
+[![Express](https://img.shields.io/badge/express-4.17.3-000?style=flat-square&logo=express)](https://expressjs.com/)
+[![IO Redis](https://img.shields.io/badge/ioredis-5.0.3-%23DC382D?style=flat-square&logo=redis)](https://github.com/luin/ioredis)
+[![JSON Web Tokens](https://img.shields.io/badge/jsonwebtoken-8.5.1-%23000000?style=flat-square&logo=JSONWebTokens)](https://github.com/auth0/node-jsonwebtoken)
+[![TypeORM](https://img.shields.io/badge/typeorm-0.2.45-%23262627?style=flat-square&logo=Typescript)](https://typeorm.io/)
+[![PostgreSQL](https://img.shields.io/badge/pg-8.7.3-%234169E1?style=flat-square&logo=PostgreSQL)](https://www.postgresql.org/)
+[![Docker](https://img.shields.io/badge/docker-docker--composer-%232496ED?style=flat-square&logo=Docker)](https://www.docker.com/)
+
+
+
 <div align="center">
 
 # MemoryFlash API
+
+[![Heroku](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=discord&logoColor=white)](https://memoryflash-api.herokuapp.com)
 
 **_Essa é a API desenvolvida para a aplicação mobile de MemoryFlash_**
 
