@@ -26,6 +26,8 @@
 
 O **MemoryFlash** é uma aplicação de _flashcards_, cartões com perguntas e respostas, que permite ao usuário criar cartões de estudo, praticar, acompanhar seu progresso, compartilhar e obter flashcards de outros usuários.
 
+<img src="./arquitetura-memoryflash.png" width="700" align="center"/>
+
 </div>
 
 
