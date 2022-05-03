@@ -30,8 +30,13 @@ Para rodar a aplicação, você precisará ter instalado na sua máquina:
 
 ## Como rodar
 
-- `$ cp -r .env.example .env`
-- `$ docker-composer up`
+```
+$ cp -r .env.example .env
+```
+
+```
+$ docker-composer up
+```
 
 
 ## Tabelas
