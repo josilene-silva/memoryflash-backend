@@ -11,7 +11,7 @@
 [![JSON Web Tokens](https://img.shields.io/badge/jsonwebtoken-8.5.1-%23000000?style=flat-square&logo=JSONWebTokens)](https://github.com/auth0/node-jsonwebtoken)
 [![TypeORM](https://img.shields.io/badge/typeorm-0.2.45-%23262627?style=flat-square&logo=Typescript)](https://typeorm.io/)
 [![PostgreSQL](https://img.shields.io/badge/pg-8.7.3-%234169E1?style=flat-square&logo=PostgreSQL)](https://www.postgresql.org/)
-[![Docker](https://img.shields.io/badge/docker-docker--composer-%232496ED?style=flat-square&logo=Docker)](https://www.docker.com/)
+[![Docker](https://img.shields.io/badge/docker-docker--compose-%232496ED?style=flat-square&logo=Docker)](https://www.docker.com/)
 
 
 
@@ -45,7 +45,7 @@ O **MemoryFlash** é uma aplicação de _flashcards_, cartões com perguntas e r
 Para rodar a aplicação, você precisará ter instalado na sua máquina:
 
 - [Docker](https://www.docker.com/)
-- [Docker-Composer](https://docs.docker.com/compose/install/)
+- [Docker-Compose](https://docs.docker.com/compose/install/)
 
 ## Como rodar
 
