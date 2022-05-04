@@ -51,14 +51,40 @@ Para rodar a aplicação, você precisará ter instalado na sua máquina:
 
 ## Como rodar
 
+Instale as dependências:
+
+```
+$ yarn
+```
+
+ou
+
+```
+$ npm
+```
+
+Faça uma cópia do arquivo da variáveis de ambiente e defina seus valores de acordo com sua preferência:
+
 ```
 $ cp -r .env.example .env
 ```
 
+Execute o comando para subir os containers da aplicação, do banco de dados (PostgreSQL) e do Redis:
+
 ```
-$ docker-compose up
+$ docker-compose up --build
 ```
 
+Em paralelo, rode as migrations:
+
+```
+$ yarn migration:run
+```
+ou
+
+```
+$ npm run migration:run
+```
 
 ## Tabelas
 
