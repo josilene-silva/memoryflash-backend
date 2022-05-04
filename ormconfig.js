@@ -10,6 +10,12 @@ const config = ambient === 'development' ? {
     migrations: './dist/shared/infra/database/typeorm/migrations/*.js',
 };
 
+const extra = ambient === 'development' ? null : ({
+    ssl: {
+        rejectUnauthorized: false,
+    },
+})
+
 module.exports = [
     {
         name: 'default',
@@ -26,10 +32,6 @@ module.exports = [
         cli: {
             migrationsDir: './src/shared/infra/database/typeorm/migrations',
         },
-        extra: {
-            ssl: {
-                rejectUnauthorized: false,
-            },
-        },
+        extra
     }
 ];
