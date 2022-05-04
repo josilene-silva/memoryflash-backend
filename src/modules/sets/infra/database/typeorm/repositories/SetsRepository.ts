@@ -10,17 +10,11 @@ export class SetsRepository implements ISetsRepository {
     this.repository = getRepository(Set);
   }
 
-  async create({
-    name,
-    description,
-    users,
-    categoryId,
-  }: CreateSetDTO): Promise<Set> {
+  async create({ name, description, categoryId }: CreateSetDTO): Promise<Set> {
     const set = this.repository.create({
       name,
       description,
       categoryId,
-      users,
     });
 
     const setCreated = await this.repository.save(set);
@@ -53,16 +47,16 @@ export class SetsRepository implements ISetsRepository {
     await this.repository.delete(id);
   }
 
-  async list(userId?: string): Promise<Set[]> {
-    const sets = await this.repository.find({
-      where: {
-        user: {
-          id: userId,
-        },
-      },
-      relations: ["category", "cards", "practices"],
-      order: { name: "ASC" },
-    });
+  async list(userId: string): Promise<Set[]> {
+    const sets = await this.repository
+      .createQueryBuilder("sets")
+      .leftJoinAndSelect("sets.userToSet", "userToSet")
+      .leftJoinAndSelect("sets.category", "category")
+      .leftJoinAndSelect("sets.cards", "cards")
+      .leftJoinAndSelect("sets.practices", "practices")
+      .where("userToSet.userId = :userId", { userId })
+      .getMany();
+
     return sets;
   }
 

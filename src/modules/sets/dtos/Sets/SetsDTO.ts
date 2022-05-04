@@ -1,4 +1,3 @@
-import { User } from "@modules/accounts/infra/database/typeorm/entities/User";
 import { IBaseEntity } from "@shared/dtos";
 
 export type SetsDTO = IBaseEntity & {
@@ -6,5 +5,4 @@ export type SetsDTO = IBaseEntity & {
   name: string;
   description: string;
   categoryId: number;
-  users: User[];
 };
