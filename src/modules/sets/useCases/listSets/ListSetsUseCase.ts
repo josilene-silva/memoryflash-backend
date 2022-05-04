@@ -18,14 +18,11 @@ export class ListSetsUseCase {
     const setsCache = await this.cacheProvider.get(`sets:${userId}`);
 
     if (!setsCache) {
-      console.log("Pega do banco");
       sets = await this.setsRepository.list(userId);
       await this.cacheProvider.set(`sets:${userId}`, JSON.stringify(sets));
     } else {
-      console.log("Pega do cache");
       sets = JSON.parse(setsCache);
     }
-    // await this.cacheProvider.del(`sets:${userId}`);
 
     return sets;
   }

@@ -19,11 +19,9 @@ export class ListCategoriesUseCase {
     const categoriesCache = await this.cacheProvider.get("categories");
 
     if (!categoriesCache) {
-      console.log("Pega do banco");
       categories = await this.categoriesRepository.list();
       await this.cacheProvider.set(`categories`, JSON.stringify(categories));
     } else {
-      console.log("Pega do cache");
       categories = JSON.parse(categoriesCache);
     }
 

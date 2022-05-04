@@ -19,11 +19,9 @@ export class ListPracticeUseCase {
     const practiceCache = await this.cacheProvider.get(`practice:${id}`);
 
     if (!practiceCache) {
-      console.log("Pega do banco");
       practice = await this.practicesRepository.listOne(id);
       await this.cacheProvider.set(`practice:${id}`, JSON.stringify(practice));
     } else {
-      console.log("Pega do cache");
       practice = JSON.parse(practiceCache);
     }
 
