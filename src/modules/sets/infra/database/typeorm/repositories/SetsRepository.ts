@@ -13,14 +13,14 @@ export class SetsRepository implements ISetsRepository {
   async create({
     name,
     description,
-    userId,
+    users,
     categoryId,
   }: CreateSetDTO): Promise<Set> {
     const set = this.repository.create({
       name,
       description,
-      userId,
       categoryId,
+      users,
     });
 
     const setCreated = await this.repository.save(set);
