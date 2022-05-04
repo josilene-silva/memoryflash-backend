@@ -46,6 +46,7 @@ O **MemoryFlash** é uma aplicação de _flashcards_, cartões com perguntas e r
 
 Para rodar a aplicação, você precisará ter instalado na sua máquina:
 
+- [NPM](https://www.npmjs.com/) ou [Yarn](https://yarnpkg.com/)
 - [Docker](https://www.docker.com/)
 - [Docker-Compose](https://docs.docker.com/compose/install/)
 
@@ -95,6 +96,12 @@ $ npm run migration:run
 |`cards`|*Tabela de cartões*
 |`categories`|*Tabela de categorias*
 |`practices`|*Tabela de práticas*
+|`users_sets`|*Tabela de usuários e conjuntos*
+
+<div align="center">
+  <img src="./esquema-banco.png" width="700" />
+</div>
+
 
 ## Funcionalidades
 
