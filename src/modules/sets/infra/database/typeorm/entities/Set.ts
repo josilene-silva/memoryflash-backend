@@ -1,4 +1,3 @@
-import { User } from "@modules/accounts/infra/database/typeorm/entities/User";
 import { Practice } from "@modules/practices/infra/database/typeorm/entities/Practice";
 import { BaseEntity } from "@shared/infra/database/typeorm/entities/BaseEntity";
 import { UUIDProvider } from "@shared/providers/UUIDProvider/implementations/UUIDProvider";
@@ -7,14 +6,13 @@ import {
   Column,
   Entity,
   JoinColumn,
-  JoinTable,
-  ManyToMany,
   OneToMany,
   OneToOne,
   PrimaryColumn,
 } from "typeorm";
 import { Card } from "./Card";
 import { Category } from "./Category";
+import { UserToSet } from "./UserToSet";
 
 @Entity("sets")
 class Set extends BaseEntity {
@@ -40,13 +38,8 @@ class Set extends BaseEntity {
   @OneToMany(() => Practice, (practice) => practice.set)
   practices: Practice[];
 
-  @ManyToMany(() => User)
-  @JoinTable({
-    name: "users_sets",
-    joinColumns: [{ name: "set_id" }],
-    inverseJoinColumns: [{ name: "user_id" }],
-  })
-  users: User[];
+  @OneToMany(() => UserToSet, (userToSet) => userToSet.set)
+  userToSet: UserToSet[];
 
   constructor() {
     super();

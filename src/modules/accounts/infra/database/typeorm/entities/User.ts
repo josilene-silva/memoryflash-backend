@@ -1,8 +1,9 @@
 import { UUIDProvider } from "@shared/providers/UUIDProvider/implementations/UUIDProvider";
 import { IUUIDProvider } from "@shared/providers/UUIDProvider/models/IUUIDProvider";
 import { BaseEntity } from "@shared/infra/database/typeorm/entities/BaseEntity";
+import { UserToSet } from "@modules/sets/infra/database/typeorm/entities/UserToSet";
 
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
 
 @Entity("users")
 class User extends BaseEntity {
@@ -17,6 +18,9 @@ class User extends BaseEntity {
 
   @Column()
   password: string;
+
+  @OneToMany(() => UserToSet, (userToSet) => userToSet.user)
+  userToSet: UserToSet[];
 
   constructor() {
     super();
