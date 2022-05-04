@@ -19,7 +19,7 @@
 
 # MemoryFlash API
 
-[![Heroku](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=discord&logoColor=white)](https://memoryflash-api.herokuapp.com)
+[![Heroku](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)](https://memoryflash-api.herokuapp.com)
 
 **_Essa é a API desenvolvida para a aplicação mobile MemoryFlash_**
 
