@@ -1,27 +1,26 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateSets1647321010957 implements MigrationInterface {
+export class CreateUsersSets1651628623477 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "sets",
+        name: "users_sets",
         columns: [
           {
             name: "id",
-            type: "uuid",
-            isPrimary: true,
-          },
-          {
-            name: "category_id",
             type: "integer",
+            generationStrategy: "increment",
+            isPrimary: true,
+            isNullable: false,
+            isGenerated: true,
           },
           {
-            name: "name",
-            type: "varchar",
+            name: "user_id",
+            type: "uuid",
           },
           {
-            name: "description",
-            type: "varchar",
+            name: "set_id",
+            type: "uuid",
           },
           {
             name: "created_at",
@@ -36,11 +35,19 @@ export class CreateSets1647321010957 implements MigrationInterface {
         ],
         foreignKeys: [
           {
-            name: "FKCategorySet",
-            referencedTableName: "categories",
+            name: "FKUsersSetsUser",
+            referencedTableName: "users",
             referencedColumnNames: ["id"],
-            columnNames: ["category_id"],
-            onDelete: "SET NULL",
+            columnNames: ["user_id"],
+            onDelete: "CASCADE",
+            onUpdate: "CASCADE",
+          },
+          {
+            name: "FKUsersSetsSet",
+            referencedTableName: "sets",
+            referencedColumnNames: ["id"],
+            columnNames: ["set_id"],
+            onDelete: "CASCADE",
             onUpdate: "CASCADE",
           },
         ],
@@ -49,6 +56,6 @@ export class CreateSets1647321010957 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("sets");
+    await queryRunner.dropTable("users_sets");
   }
 }

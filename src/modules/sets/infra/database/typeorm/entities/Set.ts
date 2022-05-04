@@ -7,6 +7,8 @@ import {
   Column,
   Entity,
   JoinColumn,
+  JoinTable,
+  ManyToMany,
   OneToMany,
   OneToOne,
   PrimaryColumn,
@@ -25,15 +27,8 @@ class Set extends BaseEntity {
   @Column()
   description: string;
 
-  @Column({ name: "user_id" })
-  userId: string;
-
   @Column({ name: "category_id" })
   categoryId: number;
-
-  @OneToOne(() => User)
-  @JoinColumn({ name: "user_id" })
-  user: User;
 
   @OneToOne(() => Category)
   @JoinColumn({ name: "category_id" })
@@ -44,6 +39,14 @@ class Set extends BaseEntity {
 
   @OneToMany(() => Practice, (practice) => practice.set)
   practices: Practice[];
+
+  @ManyToMany(() => User)
+  @JoinTable({
+    name: "users_sets",
+    joinColumns: [{ name: "set_id" }],
+    inverseJoinColumns: [{ name: "user_id" }],
+  })
+  users: User[];
 
   constructor() {
     super();
