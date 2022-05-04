@@ -1,18 +1,20 @@
 import { IUsersRepository } from "@modules/accounts/repositories";
+import { CreateSetDTO } from "@modules/sets/dtos";
 import { Set } from "@modules/sets/infra/database/typeorm/entities/Set";
-import { ISetsRepository } from "@modules/sets/repositories";
+import {
+  ISetsRepository,
+  IUsersToSetsRepository,
+} from "@modules/sets/repositories";
 import { ICacheProvider } from "@shared/container/providers/CacheProvider/ICacheProvider";
 
 import { AppError } from "@shared/errors/AppError";
 
 import { inject, injectable } from "tsyringe";
 
-interface IRequest {
-  name: string;
-  description: string;
-  categoryId: number;
+interface IRequest extends CreateSetDTO {
   userId: string;
 }
+
 @injectable()
 export class CreateSetUseCase {
   constructor(
@@ -21,7 +23,9 @@ export class CreateSetUseCase {
     @inject("CacheProvider")
     private cacheProvider: ICacheProvider,
     @inject("UsersRepository")
-    private usersRepository: IUsersRepository
+    private usersRepository: IUsersRepository,
+    @inject("UsersToSetsRepository")
+    private usersToSetsRepository: IUsersToSetsRepository
   ) {}
 
   async execute({
@@ -40,7 +44,11 @@ export class CreateSetUseCase {
       name,
       description,
       categoryId,
-      users: [user],
+    });
+
+    await this.usersToSetsRepository.create({
+      userId,
+      setId: set.id,
     });
 
     await this.cacheProvider.del(`sets:${userId}`);
