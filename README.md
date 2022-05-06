@@ -151,9 +151,9 @@ $ npm run migration:run
 |`/sets/:id`|`PUT`|Atualização de conjunto|Sim
 |`/sets/:id`|`DELETE`|Remoção de conjunto|Sim
 |`/cards`|`POST`|Cadastro de cartão|Sim
-|`/cards/:id`|`GET`|Listagem de um cartão|Não
-|`/cards/:id`|`PUT`|Atualização de cartão|Não
-|`/cards`|`PACTH`|Atualização do nível de dificuldade de cartões|Não
-|`/cards/:id`|`DELETE`|Remoção de cartão|Não
+|`/cards/:id`|`GET`|Listagem de um cartão|Sim
+|`/cards/:id`|`PUT`|Atualização de cartão|Sim
+|`/cards`|`PACTH`|Atualização do nível de dificuldade de cartões|Sim
+|`/cards/:id`|`DELETE`|Remoção de cartão|Sim
 |`/practices`|`POST`|Criação da prática|Sim
-|`/practices/:id`|`GET`|Listagem de uma prática|Não
+|`/practices/:id`|`GET`|Listagem de uma prática|Sim

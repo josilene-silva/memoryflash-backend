@@ -16,7 +16,8 @@ const updateCardDifficultyLevelController =
 
 const cardRoutes = Router();
 
-cardRoutes.post("/", ensureAuthenticate, createCardController.handle);
+cardRoutes.use(ensureAuthenticate);
+cardRoutes.post("/", createCardController.handle);
 cardRoutes.get("/:id", listCardController.handle);
 cardRoutes.put("/:id", updateCardController.handle);
 cardRoutes.patch("/", updateCardDifficultyLevelController.handle);

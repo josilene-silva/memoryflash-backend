@@ -9,7 +9,8 @@ const listPracticeController = new ListPracticeController();
 
 const practicesRoutes = Router();
 
-practicesRoutes.post("/", ensureAuthenticate, createPracticeController.handle);
+practicesRoutes.use(ensureAuthenticate);
+practicesRoutes.post("/", createPracticeController.handle);
 practicesRoutes.get("/:id", listPracticeController.handle);
 
 export { practicesRoutes };

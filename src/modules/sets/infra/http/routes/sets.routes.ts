@@ -15,10 +15,11 @@ const listSetController = new ListSetController();
 
 const setRoutes = Router();
 
-setRoutes.post("/", ensureAuthenticate, createSetController.handle);
-setRoutes.get("/", ensureAuthenticate, listSetsController.handle);
-setRoutes.get("/:id", ensureAuthenticate, listSetController.handle);
-setRoutes.put("/:id", ensureAuthenticate, updateSetController.handle);
-setRoutes.delete("/:id", ensureAuthenticate, deleteSetController.handle);
+setRoutes.use(ensureAuthenticate);
+setRoutes.post("/", createSetController.handle);
+setRoutes.get("/", listSetsController.handle);
+setRoutes.get("/:id", listSetController.handle);
+setRoutes.put("/:id", updateSetController.handle);
+setRoutes.delete("/:id", deleteSetController.handle);
 
 export { setRoutes };
