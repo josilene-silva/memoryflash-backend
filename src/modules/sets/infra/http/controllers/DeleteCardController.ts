@@ -9,8 +9,8 @@ export class DeleteCardController {
 
     const deleteCardUseCase = container.resolve(DeleteCardUseCase);
 
-    await deleteCardUseCase.execute(id);
+    await deleteCardUseCase.execute(id, req.user.id);
 
-    return res.json({ message: "Card deleted" });
+    return res.json({ message: "Cartão apagado" });
   }
 }

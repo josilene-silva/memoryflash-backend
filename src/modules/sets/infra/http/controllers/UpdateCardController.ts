@@ -15,6 +15,7 @@ export class UpdateCardController {
       back,
       setId,
       id,
+      userId: req.user.id,
     });
 
     return res.json({ message: "Card updated" });

@@ -1,6 +1,7 @@
 import { UpdateCategoryDTO } from "@modules/sets/dtos";
 import { Category } from "@modules/sets/infra/database/typeorm/entities/Category";
 import { ICategoriesRepository } from "@modules/sets/repositories";
+import { ICacheProvider } from "@shared/container/providers/CacheProvider/ICacheProvider";
 import { AppError } from "@shared/errors/AppError";
 
 import { inject, injectable } from "tsyringe";
@@ -9,7 +10,9 @@ import { inject, injectable } from "tsyringe";
 export class UpdateCategoryUseCase {
   constructor(
     @inject("CategoriesRepository")
-    private categoriesRepository: ICategoriesRepository
+    private categoriesRepository: ICategoriesRepository,
+    @inject("CacheProvider")
+    private cacheProvider: ICacheProvider
   ) {}
 
   async execute({ name, id }: UpdateCategoryDTO): Promise<Category> {
@@ -32,6 +35,8 @@ export class UpdateCategoryUseCase {
       id,
       name,
     });
+
+    await this.cacheProvider.del("categories");
 
     return categoryUpdated;
   }

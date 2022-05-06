@@ -3,8 +3,13 @@ import {
   ICategoriesRepository,
   ISetsRepository,
 } from "@modules/sets/repositories";
+import { ICacheProvider } from "@shared/container/providers/CacheProvider/ICacheProvider";
 import { AppError } from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
+
+interface IRequest extends UpdateSetDTO {
+  userId: string;
+}
 
 @injectable()
 export class UpdateSetUseCase {
@@ -12,7 +17,9 @@ export class UpdateSetUseCase {
     @inject("SetsRepository")
     private setsRepository: ISetsRepository,
     @inject("CategoriesRepository")
-    private categoriesRepository: ICategoriesRepository
+    private categoriesRepository: ICategoriesRepository,
+    @inject("CacheProvider")
+    private cacheProvider: ICacheProvider
   ) {}
 
   async execute({
@@ -20,7 +27,8 @@ export class UpdateSetUseCase {
     name,
     description,
     categoryId,
-  }: UpdateSetDTO): Promise<void> {
+    userId,
+  }: IRequest): Promise<void> {
     const setExists = await this.setsRepository.findById(id);
     if (!setExists) throw new AppError("Conjunto não encontrado", 404);
 
@@ -33,5 +41,8 @@ export class UpdateSetUseCase {
       description,
       categoryId,
     });
+
+    await this.cacheProvider.del(`set:${id}`);
+    await this.cacheProvider.del(`sets:${userId}`);
   }
 }

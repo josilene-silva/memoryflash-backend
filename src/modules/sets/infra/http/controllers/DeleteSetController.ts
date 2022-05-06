@@ -9,8 +9,8 @@ export class DeleteSetController {
 
     const deleteSetUseCase = container.resolve(DeleteSetUseCase);
 
-    await deleteSetUseCase.execute(id);
+    await deleteSetUseCase.execute(id, req.user.id);
 
-    return res.json({ message: "Set deleted" });
+    return res.json({ message: "Conjunto apagado" });
   }
 }

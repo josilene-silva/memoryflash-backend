@@ -15,6 +15,7 @@ export class UpdateSetController {
       name,
       description,
       categoryId,
+      userId: req.user.id,
     });
 
     return res.json({ message: "Set updated" });
