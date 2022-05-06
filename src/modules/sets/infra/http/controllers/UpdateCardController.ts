@@ -18,6 +18,6 @@ export class UpdateCardController {
       userId: req.user.id,
     });
 
-    return res.json({ message: "Card updated" });
+    return res.json({ message: "Cartão atualizado" });
   }
 }
