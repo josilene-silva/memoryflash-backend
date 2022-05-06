@@ -23,7 +23,10 @@ export class SetsRepository implements ISetsRepository {
   }
 
   async findById(id: string): Promise<Set> {
-    const set = await this.repository.findOne({ id });
+    const set = await this.repository.findOne({
+      where: { id },
+      relations: ["cards"],
+    });
     return set;
   }
 

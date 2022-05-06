@@ -21,8 +21,12 @@ export class IORedisProvider implements ICacheProvider {
     return redisGet;
   }
 
-  async set(key: string, value: string, expiration = ONE_HOUR): Promise<void> {
-    await this.redisClient.set(key, value, "EX", expiration);
+  async set(
+    key: string,
+    value: string,
+    expirationInSeconds = ONE_HOUR
+  ): Promise<void> {
+    await this.redisClient.set(key, value, "EX", expirationInSeconds);
   }
 
   async del(key: string): Promise<void> {

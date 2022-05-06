@@ -27,9 +27,20 @@ export class CreatePracticeUseCase {
     endTime,
     userId,
   }: CreatePracticeDTO): Promise<Practice> {
-    const set = this.setsRepository.findById(setId);
+    const set = await this.setsRepository.findById(setId);
 
     if (!set) throw new AppError("Conjunto não encontrado", 404);
+
+    if (set.cards.length < amountEasy + amountMedium + amountHard) {
+      throw new AppError("Erro na quantidade da cartões", 400);
+    }
+
+    if (endTime >= startTime) {
+      throw new AppError(
+        "Tempo de início deve ser antes e diferente do final",
+        400
+      );
+    }
 
     const practice = await this.practicesRepository.create({
       setId,
@@ -42,7 +53,8 @@ export class CreatePracticeUseCase {
 
     await this.cacheProvider.set(
       `practice:${practice.id}`,
-      JSON.stringify(practice)
+      JSON.stringify(practice),
+      60 * 10
     );
     await this.cacheProvider.del(`set:${setId}`);
     await this.cacheProvider.del(`sets:${userId}`);
