@@ -1,4 +1,4 @@
-import { AuthenticateUserUseCase } from "@modules/accounts/useCases/authenticateUser/authenticateUserUseCase";
+import { AuthenticateUserUseCase } from "@modules/accounts/useCases/authenticateUser/AuthenticateUserUseCase";
 
 import { Request, Response } from "express";
 import { container } from "tsyringe";
