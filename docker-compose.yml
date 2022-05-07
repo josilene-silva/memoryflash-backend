@@ -26,6 +26,7 @@ services:
     network_mode: host
 
   memoryflash_redis:
+    container_name: memoryflash_redis
     image: redis:alpine
     env_file:
       - .env
