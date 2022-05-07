@@ -7,6 +7,7 @@
     "dev": "ts-node-dev -r tsconfig-paths/register --transpile-only --ignore-watch node_modules --respawn src/server.ts",
     "typeorm": "ts-node-dev -r tsconfig-paths/register node_modules/typeorm/cli.js",
     "migration:run": "ts-node-dev -r tsconfig-paths/register node_modules/typeorm/cli.js migration:run",
+    "seed:categories": "ts-node-dev src/shared/infra/database/typeorm/seeds/categories.ts",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
     "heroku-postbuild": "npm run build",
     "start": "node dist/server.js"
