@@ -6,6 +6,7 @@ import { IPracticesRepository } from "@modules/practices/repositories/IPractices
 import { ISetsRepository } from "@modules/sets/repositories";
 import { AppError } from "@shared/errors/AppError";
 import { ICacheProvider } from "@shared/container/providers/CacheProvider/ICacheProvider";
+import { isBefore } from "date-fns";
 
 @injectable()
 export class CreatePracticeUseCase {
@@ -35,9 +36,9 @@ export class CreatePracticeUseCase {
       throw new AppError("Erro na quantidade da cartões", 400);
     }
 
-    if (endTime >= startTime) {
+    if (isBefore(new Date(endTime), new Date(startTime))) {
       throw new AppError(
-        "Tempo de início deve ser antes e diferente do final",
+        "Tempo de início deve ser menor e diferente do final",
         400
       );
     }
