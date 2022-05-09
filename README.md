@@ -87,6 +87,17 @@ ou
 $ npm run migration:run
 ```
 
+Para popular o banco com categorias, execute:
+
+```
+$ yarn seed:categories
+```
+ou
+
+```
+$ npm run seed:categories
+```
+
 ## Tabelas
 
 |Tabela|Descrição
